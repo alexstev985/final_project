@@ -1,6 +1,7 @@
 <?php
 
 class Product extends DbConnection {
+    public $category_name;
     public function addCategory ($category_name, $destination) {
         $images = scandir('uploads');
         $pic_name = $_FILES['category_image']['name'];

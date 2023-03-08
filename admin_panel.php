@@ -132,6 +132,23 @@ if (isset($_POST['add_category'])) {
           </form>
         </div>
       </div>
+
+      <h2 class="text-center">Update or remove category</h2>
+
+      <div class="row">
+        <div class="col-3 my-3">
+          <div class="card">
+            <img src="./images/dell_pc.png" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 h5 class="card-title text-center">Desktops</h5>
+              <div class="d-flex justify-content-between">
+                <button class="btn btn-outline-primary">Update</button>
+                <button class="btn btn-outline-danger">Remove</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <!--Footer-->
     <div class="footer bg-dark text-start text-light py-3">
