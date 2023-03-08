@@ -3,14 +3,16 @@
 include 'includes/autoloader.inc.php';
 Session::sessionStart();
 Session::userNotLogged();
-$admin = new Customer();
+$new_category = new Product();
 
 ?>
 
 <?php
 
-if (isset($_POST['log_out'])) {
-  Session:: logout();
+if (isset($_POST['add_category'])) {
+  $category_name = $_POST['category_name'];
+  $category_image = $_FILES['category_image'];
+  $new_category->addCategory($category_name, $category_image);
 }
 
 ?>
@@ -121,7 +123,7 @@ if (isset($_POST['log_out'])) {
     <div class="container">
       <div class="row" id="categories">
         <div class="col-xs-12 col-sm-12 offset-md-4 col-md-4 offset-lg-4 col-lg-4 offset-xl-4 col-xl-4    offset-xxl-4 col-xxl-4 text-start d-block m-auto p-xs-2 p-sm-2 p-md-0 p-lg-3 p-xl-5 p-xxl-5 my-5">
-          <form action="" method="post">
+          <form action="" method="post" enctype="multipart/form-data">
             <label for="">Category name</label><br>
             <input class="form-control mb-2 border-2" type="text" name="category_name" required><br>
             <label for="">Category image</label><br>
