@@ -51,6 +51,15 @@ class Product extends DbConnection {
             echo "<script type=text/javascript>alert('Error while trying to add new category')</script>";
         }
     }
+
+    public $category_card;
+    public function loadCategories () {
+        $all_categories = "SELECT * FROM categories";
+        $all_categories_result = $this->conn->query($all_categories);
+        while ($row = $all_categories_result->fetch_assoc()) {
+            
+        }
+    }
 }
 
 ?>
