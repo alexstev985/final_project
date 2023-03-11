@@ -56,8 +56,20 @@ class Product extends DbConnection {
         $all_categories_result = $this->conn->query($all_categories);
         if ($all_categories_result->num_rows > 0) {
             while ($row = $all_categories_result->fetch_assoc()) {
-                echo "<option value='category_edit.php?id=".$row['category_id']."'>".$row['category_name']."
+                echo "<option class='category-location' value='".$row['category_id']."'>
+                ".$row['category_name']."
                 </option>";
+            }
+        }
+    }
+
+    public function openCategoryPage ($search) {
+        $all_categories = "SELECT * FROM categories WHERE category_id = '$search'";
+        $all_categories_result = $this->conn->query($all_categories);
+        if ($all_categories_result->num_rows > 0) {
+            while ($row = $all_categories_result->fetch_assoc()) {
+                header("location: category_page.php?id='". $row['category_id'] ."'&category_name='". $row['category_name'] ."'");
+                //var_dump($row['category_id']);
             }
         }
     }

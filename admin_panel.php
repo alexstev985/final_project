@@ -15,6 +15,15 @@ if (isset($_POST['add_category'])) {
   $new_category->addCategory($category_name, $category_image);
 }
 
+if (isset($_POST['log_out'])) {
+  Session:: logout();
+}
+
+if (isset($_POST['edit_category'])) {
+  $searched_category = $_POST['select_category'];
+  $new_category->openCategoryPage($searched_category);
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -121,7 +130,7 @@ if (isset($_POST['add_category'])) {
     </nav>
     <!--Content-->
     <div class="container">
-    <h2 class="text-center">Add new category</h2>
+      <h2 class="text-center">Add new category</h2>
 
       <div class="row" id="categories">
         <div class="col-xs-12 col-sm-12 offset-md-4 col-md-4 offset-lg-4 col-lg-4 offset-xl-4 col-xl-4    offset-xxl-4 col-xxl-4 text-start d-block m-auto p-xs-2 p-sm-2 p-md-0 p-lg-3 p-xl-5 p-xxl-5 my-5">
@@ -146,6 +155,7 @@ if (isset($_POST['add_category'])) {
               $new_category->loadCategories();
             ?>
             </select>
+            <input class="btn btn-outline-primary mt-1" type="submit" value="Edit category" name="edit_category" id="open-category-location">
           </form>
         </div>
       </div>
@@ -163,8 +173,8 @@ if (isset($_POST['add_category'])) {
             </div>
           </div>
         </div>
-      </div>
-    </div>-->
+      </div>-->
+    </div>
     <!--Footer-->
     <div class="footer bg-dark text-start text-light py-3">
       <div class="container">
