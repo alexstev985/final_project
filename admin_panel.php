@@ -121,6 +121,8 @@ if (isset($_POST['add_category'])) {
     </nav>
     <!--Content-->
     <div class="container">
+    <h2 class="text-center">Add new category</h2>
+
       <div class="row" id="categories">
         <div class="col-xs-12 col-sm-12 offset-md-4 col-md-4 offset-lg-4 col-lg-4 offset-xl-4 col-xl-4    offset-xxl-4 col-xxl-4 text-start d-block m-auto p-xs-2 p-sm-2 p-md-0 p-lg-3 p-xl-5 p-xxl-5 my-5">
           <form action="" method="post" enctype="multipart/form-data">
@@ -136,11 +138,24 @@ if (isset($_POST['add_category'])) {
       <h2 class="text-center">Update or remove category</h2>
 
       <div class="row">
+        <div class="col-xs-12 col-sm-12 offset-md-4 col-md-4 offset-lg-4 col-lg-4 offset-xl-4 col-xl-4    offset-xxl-4 col-xxl-4 text-start d-block m-auto p-xs-2 p-sm-2 p-md-0 p-lg-3 p-xl-5 p-xxl-5 my-5">
+          <form action="" method="get" enctype="multipart/form-data">
+            <select class="form-select" name="select_category" id="floatingSelect" aria-label="Floating label select example">
+            <option selected value="">Select category</option>
+            <?php
+              $new_category->loadCategories();
+            ?>
+            </select>
+          </form>
+        </div>
+      </div>
+
+      <!--<div class="row">
         <div class="col-3 my-3">
           <div class="card">
             <img src="./images/dell_pc.png" class="card-img-top" alt="...">
             <div class="card-body">
-              <h5 h5 class="card-title text-center">Desktops</h5>
+              <h5 class="card-title text-center">Desktops</h5>
               <div class="d-flex justify-content-between">
                 <button class="btn btn-outline-primary">Update</button>
                 <button class="btn btn-outline-danger">Remove</button>
@@ -149,7 +164,7 @@ if (isset($_POST['add_category'])) {
           </div>
         </div>
       </div>
-    </div>
+    </div>-->
     <!--Footer-->
     <div class="footer bg-dark text-start text-light py-3">
       <div class="container">

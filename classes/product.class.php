@@ -1,7 +1,6 @@
 <?php
 
 class Product extends DbConnection {
-    public $category_name;
     public function addCategory ($category_name, $destination) {
         $images = scandir('uploads');
         $pic_name = $_FILES['category_image']['name'];
@@ -52,12 +51,13 @@ class Product extends DbConnection {
         }
     }
 
-    public $category_card;
     public function loadCategories () {
         $all_categories = "SELECT * FROM categories";
         $all_categories_result = $this->conn->query($all_categories);
-        while ($row = $all_categories_result->fetch_assoc()) {
-            
+        if ($all_categories_result->num_rows > 0) {
+            while ($row = $all_categories_result->fetch_assoc()) {
+                echo "<option value=".$row['category_id'].">".$row['category_name']."</option>";
+            }
         }
     }
 }
