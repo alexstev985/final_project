@@ -56,7 +56,8 @@ class Product extends DbConnection {
         $all_categories_result = $this->conn->query($all_categories);
         if ($all_categories_result->num_rows > 0) {
             while ($row = $all_categories_result->fetch_assoc()) {
-                echo "<option value=".$row['category_id'].">".$row['category_name']."</option>";
+                echo "<option value='category_edit.php?id=".$row['category_id']."'>".$row['category_name']."
+                </option>";
             }
         }
     }
