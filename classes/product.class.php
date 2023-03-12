@@ -73,7 +73,7 @@ class Product extends DbConnection {
             }
         }
     }
-    //public $category_data;
+
     public function displayCategoryData () {
         $category_id = $_GET['id'];
         //$category_name = $_GET['category_name'];
@@ -87,13 +87,60 @@ class Product extends DbConnection {
             echo  "<form action='' method='post' enctype='multipart/form-data'>";
             echo  "<label for=''>Category name</label><br>";
             echo  "<input class='form-control mb-2 border-2' type='text' name='new_category_name' value='".$row['category_name']."' required><br>";
+            echo  "<input class='btn btn-outline-primary mt-1 mb-5' type='submit' value='Change name' name='update_category_name'><br>";
             echo  "<label for=''>Category image</label><br>";
             echo  "<input class='form-control border-2' type='file' name='new_category_image' value='".$row['category_image']."' required><br>";
-            echo  "<input class='btn btn-outline-primary mt-1' type='submit' value='Save changes' name='update_category'>";
+            echo  "<input class='btn btn-outline-primary mt-1' type='submit' value='Change image' name='update_category_image'>";
             echo  "</form>";
             echo  "</div>";
             echo  "</div>";
         }
+    }
+
+    public function updateCategoryName ($new_category_name) {
+
+    }
+
+    public function updateCategoryImage ($destination) {
+        $category_id = $_GET['id'];
+        $images = scandir('uploads');
+        $new_pic_name = $_FILES['new_category_image']['name'];
+        $new_pic_temp = $_FILES['new_category_image']['tmp_name'];
+        $new_pic_type = $_FILES['new_category_image']['type'];
+        $new_pic_size = $_FILES['new_category_image']['size'];
+        $max_pic_size = 1000 * 1000;
+        $new_img_ext = pathinfo($_FILES['new_category_image']['name']);
+        $allowed_file_types = ['image/jpeg', 'image/png', 'image/jpg', 'image/gif'];
+        
+        $get_category_query = "SELECT * FROM categories WHERE category_id = $category_id";
+        $get_category_result = $this->conn->query($get_category_query);
+
+        // if (in_array($pic_name, $images)) {
+        //     $pic_name = $img_ext['filename'] . '_' . date('Y-m-d His') . '.' . $img_ext['extension'];
+        // }
+
+        // if (!in_array($new_pic_type, $allowed_file_types)) {
+        //     die('Wrong file type');
+        // }
+
+        // if ($new_pic_size > $max_pic_size) {
+        //     die('File to large');
+        // }
+
+        // $destination = 'uploads/' . $new_pic_name;
+
+        // $update_category_query = "UPDATE categories SET category_name = ?, category_image = ? WHERE category_id = ?";
+        // $update_category_prep = $this->conn->prepare($update_category_query);
+        // $update_category_prep->bind_param('sss', $new_category_name, $destination, $category_id);
+        // $update_category_result =$update_category_prep->execute();
+        // if ($update_category_result) {
+        //     if ($new_pic_name != '') {
+        //         move_uploaded_file($new_pic_temp, $destination);
+        //         echo "<script type=text/javascript>alert('Category updated')</script>";
+        //     }
+        // } else {
+        //     echo "<script type=text/javascript>alert('Error while trying to update category')</script>";
+        // }
     }
 }
 

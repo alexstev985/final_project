@@ -7,6 +7,22 @@ $edit_category = new Product();
 
 ?>
 
+<?php
+
+if (isset($_POST['log_out'])) {
+  Session:: logout();
+}
+
+if (isset($_POST['admin_panel'])) {
+  header('Location: admin_panel.php');
+}
+
+if (isset($_POST['update_category_name'])) {
+  $new_category_name = $_POST['new_category_name'];
+  $edit_category->updateCategoryName($new_category_name);
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -39,6 +55,11 @@ $edit_category = new Product();
                             <input class="bg-dark text-light border-0 me-3 py-2 ps-0" name="log_out" type="submit" value="Log out">
                           </form>
                         </li>
+                        <li class="nav-item">
+                          <form action="" method="post">
+                            <input class="bg-dark text-light border-0 me-3 py-2 ps-0" name="admin_panel" type="submit" value="Back">
+                          </form>
+                        </li>
                     </ul>
                 </div>
                 <div class="col-4 text-center pt-2"><p>Welcome Administrator</p></div>
@@ -54,7 +75,7 @@ $edit_category = new Product();
     </div>
     <!--Content-->
     <div class="container">
-      <h2 class="text-center">Update or remove category</h2>
+      <h2 class="text-center mt-3">Update or remove category</h2>
 
       <?php $edit_category->displayCategoryData(); ?>
     </div>
