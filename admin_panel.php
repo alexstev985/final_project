@@ -149,7 +149,7 @@ if (isset($_POST['edit_category'])) {
       <div class="row">
         <div class="col-xs-12 col-sm-12 offset-md-4 col-md-4 offset-lg-4 col-lg-4 offset-xl-4 col-xl-4    offset-xxl-4 col-xxl-4 text-start d-block m-auto p-xs-2 p-sm-2 p-md-0 p-lg-3 p-xl-5 p-xxl-5 my-5">
           <form action="" method="post" enctype="multipart/form-data">
-            <select class="form-select" name="select_category" id="floatingSelect" aria-label="Floating label select example">
+            <select class="form-select mb-2 border-2" name="select_category" id="floatingSelect" aria-label="Floating label select example">
             <option selected value="">Select category</option>
             <?php
               $new_category->loadCategories();
