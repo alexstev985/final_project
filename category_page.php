@@ -3,7 +3,7 @@
 include 'includes/autoloader.inc.php';
 Session::sessionStart();
 Session::userNotLogged();
-$edit_category = new Product();
+$edit_category = new Category();
 
 ?>
 

@@ -1,6 +1,6 @@
 <?php
 
-class Product extends DbConnection {
+class Category extends DbConnection {
     public function addCategory ($category_name, $destination) {
         $images = scandir('uploads');
         $pic_name = $_FILES['category_image']['name'];
@@ -82,12 +82,20 @@ class Product extends DbConnection {
         $get_category_result = $this->conn->query($get_category_query);
         if ($get_category_result->num_rows > 0) {
             $row = $get_category_result->fetch_assoc();
+            //update name
             echo  "<div class='row'>";
             echo  "<div class='col-xs-12 col-sm-12 offset-md-4 col-md-4 offset-lg-4 col-lg-4 offset-xl-4 col-xl-4    offset-xxl-4 col-xxl-4 text-start d-block m-auto p-xs-2 p-sm-2 p-md-0 p-lg-3 p-xl-5 p-xxl-5 my-5'>";
             echo  "<form action='' method='post' enctype='multipart/form-data'>";
             echo  "<label for=''>Category name</label><br>";
             echo  "<input class='form-control mb-2 border-2' type='text' name='new_category_name' value='".$row['category_name']."' required><br>";
-            echo  "<input class='btn btn-outline-primary mt-1 mb-5' type='submit' value='Change name' name='update_category_name'><br>";
+            echo  "<input class='btn btn-outline-primary mt-1' type='submit' value='Change name' name='update_category_name'><br>";
+            echo  "</form>";
+            echo  "</div>";
+            echo  "</div>";
+            //update image
+            echo  "<div class='row'>";
+            echo  "<div class='col-xs-12 col-sm-12 offset-md-4 col-md-4 offset-lg-4 col-lg-4 offset-xl-4 col-xl-4    offset-xxl-4 col-xxl-4 text-start d-block m-auto p-xs-2 p-sm-2 p-md-0 p-lg-3 p-xl-5 p-xxl-5 mb-5'>";
+            echo  "<form action='' method='post' enctype='multipart/form-data'>";
             echo  "<label for=''>Category image</label><br>";
             echo  "<input class='form-control border-2' type='file' name='new_category_image' value='".$row['category_image']."' required><br>";
             echo  "<input class='btn btn-outline-primary mt-1' type='submit' value='Change image' name='update_category_image'>";
