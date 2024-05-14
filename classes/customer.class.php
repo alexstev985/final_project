@@ -26,7 +26,7 @@ class Customer extends DbConnection {
         $new_customer = "INSERT INTO customers (full_name, email, username, `password`, `status`) VALUES (?, ?, ?, ?, ?)";
         $new_customer_prep = $this->conn->prepare($new_customer);
         $new_customer_prep->bind_param('sssss', $full_name, $email, $username, $passwd, $user_status);
-        $new_customer_result = $new_customer_prep->execute($new_customer_prep);
+        $new_customer_result = $new_customer_prep->execute();
         if ($new_customer_result) {
             header('Location: login.php');
         } else {
