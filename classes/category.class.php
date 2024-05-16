@@ -1,5 +1,4 @@
 <?php
-
 class Category extends DbConnection {
     public function addCategory ($category_name, $destination) {
         $images = scandir('uploads');
@@ -123,8 +122,9 @@ class Category extends DbConnection {
         $get_category_query = "SELECT * FROM categories WHERE category_id = $category_id";
         $get_category_result = $this->conn->query($get_category_query);
 
-         if (in_array($pic_name, $images)) {
-             $pic_name = $img_ext['filename'] . '_' . date('Y-m-d His') . '.' . $img_ext['extension'];
+         if (in_array($new_pic_name, $images)) {
+             
+            $new_pic_name = $new_img_ext['filename'] . '_' . date('Y-m-d His') . '.' . $new_img_ext['extension'];
          }
 
          if (!in_array($new_pic_type, $allowed_file_types)) {
