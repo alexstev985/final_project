@@ -21,6 +21,12 @@ if (isset($_POST['update_category_name'])) {
   $new_category_name = $_POST['new_category_name'];
   $edit_category->updateCategoryName($new_category_name);
 }
+
+if (isset($_POST['update_category_image'])) {
+  $new_destination = $_FILES['new_category_image'];
+  $edit_category->updateCategoryImage($new_destination);
+}
+
 ?>
 
 <!DOCTYPE html>

@@ -96,7 +96,7 @@ class Category extends DbConnection {
             echo  "<div class='col-xs-12 col-sm-12 offset-md-4 col-md-4 offset-lg-4 col-lg-4 offset-xl-4 col-xl-4    offset-xxl-4 col-xxl-4 text-start d-block m-auto p-xs-2 p-sm-2 p-md-0 p-lg-3 p-xl-5 p-xxl-5 mb-5'>";
             echo  "<form action='' method='post' enctype='multipart/form-data'>";
             echo  "<label for=''>Category image</label><br>";
-            echo  "<input class='form-control border-2' type='file' name='new_category_image' value='".$row['category_image']."' required><br>";
+            echo  "<input class='form-control border-2' type='file' name='new_category_image' value='' required><br>";
             echo  "<input class='btn btn-outline-primary mt-1' type='submit' value='Change image' name='update_category_image'>";
             echo  "</form>";
             echo  "</div>";
@@ -105,10 +105,19 @@ class Category extends DbConnection {
     }
 
     public function updateCategoryName ($new_category_name) {
-
+        $category_id = $_GET['id'];
+        $update_name_query = "UPDATE categories SET category_name = ? WHERE category_id = $category_id";
+        $update_name_prep = $this->conn->prepare($update_name_query);
+        $update_name_prep->bind_param('s', $new_category_name);
+        $update_name_result = $update_name_prep->execute();
+        if ($update_name_result) {
+            echo "<script type=text/javascript>alert('Category name updated')</script>";
+        } else {
+            echo "<script type=text/javascript>alert('Error while trying to update category name')</script>";
+        }
     }
 
-    public function updateCategoryImage ($destination) {
+    public function updateCategoryImage ($new_destination) {
         $category_id = $_GET['id'];
         $images = scandir('uploads');
         $new_pic_name = $_FILES['new_category_image']['name'];
@@ -135,16 +144,16 @@ class Category extends DbConnection {
              die('File to large');
          }
 
-         $destination = 'uploads/' . $new_pic_name;
+         $new_destination = 'uploads/' . $new_pic_name;
 
-         $update_category_query = "UPDATE categories SET category_name = ?, category_image = ? WHERE category_id = ?";
+         $update_category_query = "UPDATE categories SET category_image = ? WHERE category_id = $category_id";
          $update_category_prep = $this->conn->prepare($update_category_query);
-         $update_category_prep->bind_param('sss', $new_category_name, $destination, $category_id);
+         $update_category_prep->bind_param('s', $new_destination);
          $update_category_result =$update_category_prep->execute();
          if ($update_category_result) {
              if ($new_pic_name != '') {
-                 move_uploaded_file($new_pic_temp, $destination);
-                 echo "<script type=text/javascript>alert('Category updated')</script>";
+                 move_uploaded_file($new_pic_temp, $new_destination);
+                 echo "<script type=text/javascript>alert('Category image updated')</script>";
              }
          } else {
              echo "<script type=text/javascript>alert('Error while trying to update category')</script>";
