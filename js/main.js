@@ -3,15 +3,14 @@
 let dropDown = document.getElementsByClassName('show-on-hover')
 for (let i = 0; i < dropDown.length; i++) {
     dropDown[i].addEventListener('mouseenter', function () {
-        dropDown[0].classList.add('show')
-        dropDown[1].classList.add('show')
+        dropDown[i].classList.add('show')
+        //dropDown[1].classList.add('show')
     })
 
     dropDown[i].addEventListener('mouseleave', function () {
         dropDown[i].classList.remove('show')
     })
 }
-
 function ariaTrue () {
     document.getElementById('nav-link').setAttribute('aria-expanded', 'true')
 }//Event defined in html tag

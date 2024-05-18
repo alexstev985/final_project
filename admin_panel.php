@@ -96,7 +96,7 @@ if (isset($_POST['edit_category'])) {
                     <button type="button" class="border border-0 bg-white px-3 py-1 dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                       HARDWARE
                     </button>
-                    <ul class="dropdown-menu">
+                    <ul class="dropdown-menu show-on-hover">
                       <li><a class="dropdown-item" href="#">power supplies</a></li>
                       <li><a class="dropdown-item" href="#">motherboards</a></li>
                       <li><a class="dropdown-item" href="#">ssd</a></li>
@@ -111,7 +111,7 @@ if (isset($_POST['edit_category'])) {
                     <button type="button" class="border border-0 bg-white px-3 py-1 dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                       ACCESSORIES
                     </button>
-                    <ul class="dropdown-menu">
+                    <ul class="dropdown-menu show-on-hover">
                       <li><a class="dropdown-item" href="#">mice</a></li>
                       <li><a class="dropdown-item" href="#">keyboards</a></li>
                       <li><a class="dropdown-item" href="#">headphones</a></li>
