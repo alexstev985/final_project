@@ -101,6 +101,16 @@ class Category extends DbConnection {
             echo  "</form>";
             echo  "</div>";
             echo  "</div>";
+            //Delete button
+            echo  "<div class='row'>";
+            echo  "<div class='col-xs-12 col-sm-12 offset-md-4 col-md-4 offset-lg-4 col-lg-4 offset-xl-4 col-xl-4    offset-xxl-4 col-xxl-4 text-start d-block m-auto p-xs-2 p-sm-2 p-md-0 p-lg-3 p-xl-5 p-xxl-5 my-5'>";
+            echo  "<form action='' method='post' enctype='multipart/form-data'>";
+            //echo  "<label for=''>Category name</label><br>";
+            //echo  "<input class='form-control mb-2 border-2' type='text' name='new_category_name' value='".$row['category_name']."' required><br>";
+            echo  "<input class='btn btn-outline-danger mt-1' type='submit' value='Delete selected category' name='delete_category'><br>";
+            echo  "</form>";
+            echo  "</div>";
+            echo  "</div>";
         }
     }
 
@@ -158,6 +168,19 @@ class Category extends DbConnection {
          } else {
              echo "<script type=text/javascript>alert('Error while trying to update category')</script>";
          }
+    }
+
+    public function deleteCategory ($category_id) {
+        $category_id = $_GET['id'];
+        $delete_category_query = "DELETE FROM categories WHERE category_id = $category_id";
+        $delete_category_result = $this->conn->query($delete_category_query);
+        if ($delete_category_result) {
+            echo "<script type=text/javascript>alert('Category deleted')</script>";
+            echo "<script type=text/javascript>window.location.href = 'admin_panel.php'</script>";
+            //header("location: admin_panel.php");
+        } else {
+            echo "<script type=text/javascript>alert('Error while trying to delete category')</script>";
+        }
     }
 }
 

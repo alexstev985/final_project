@@ -27,6 +27,10 @@ if (isset($_POST['update_category_image'])) {
   $edit_category->updateCategoryImage($new_destination);
 }
 
+if (isset($_POST['delete_category'])) {
+  $edit_category->deleteCategory($category_id);
+}
+
 ?>
 
 <!DOCTYPE html>
